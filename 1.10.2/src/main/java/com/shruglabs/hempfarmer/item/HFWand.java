@@ -1,0 +1,124 @@
+package com.shruglabs.hempfarmer.item;
+
+import com.shruglabs.hempfarmer.entity.EntityShotLeaf;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+public class HFWand extends HFItem {
+
+	 public static int leafDamage;
+	  public static int superiorDamage;
+	  private int uses;
+	  
+	  public HFWand(String name)
+	  {
+	    super(name, 1);
+	    if (getRegistryName().toString().substring(11).startsWith("superior")) {
+	      setMaxDamage(superiorDamage);
+	    } else {
+	      setMaxDamage(leafDamage);
+	    }
+	  }
+	  
+	  public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack)
+	  {
+	    if (stack.hasTagCompound()) {
+	      if (stack.getTagCompound().hasKey("wandCooldown"))
+	      {
+	        if (stack.getTagCompound().getInteger("wandCooldown") == 0)
+	        {
+	          if (stack.getTagCompound().hasKey("firing")) {
+	            stack.getTagCompound().setInteger("firing", stack.getTagCompound().getInteger("firing") + 1);
+	          } else {
+	            stack.getTagCompound().setInteger("firing", 1);
+	          }
+	          stack.getTagCompound().setInteger("wandCooldown", 10);
+	          return false;
+	        }
+	      }
+	      else
+	      {
+	        if (stack.getTagCompound().hasKey("firing")) {
+	          stack.getTagCompound().setInteger("firing", stack.getTagCompound().getInteger("firing") + 1);
+	        } else {
+	          stack.getTagCompound().setInteger("firing", 1);
+	        }
+	        stack.getTagCompound().setInteger("wandCooldown", 10);
+	        return false;
+	      }
+	    }
+	    return true;
+	  }
+	  
+	  public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	  {
+	    return EnumActionResult.PASS;
+	  }
+	  
+	  public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
+	  {
+	    if (stack.hasTagCompound())
+	    {
+	      if (stack.getTagCompound().hasKey("wandCooldown"))
+	      {
+	        if (stack.getTagCompound().getInteger("wandCooldown") > 0) {
+	          stack.getTagCompound().setInteger("wandCooldown", stack
+	            .getTagCompound().getInteger("wandCooldown") - 1);
+	        }
+	        if ((stack.getTagCompound().hasKey("firing")) && 
+	          (stack.getTagCompound().getInteger("firing") > 0))
+	        {
+	          stack.getTagCompound().setInteger("firing", stack.getTagCompound().getInteger("firing") - 1);
+	          for (int i = 0; i < 6; i++) {
+	            if ((i % 6 == 0) && 
+	              (!world.isRemote))
+	            {
+	              world.playSound((EntityPlayer)null, entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 1.5F, 10.0F);
+	              
+	              EntityShotLeaf leaf = new EntityShotLeaf(world, (EntityLivingBase)entity);
+	              leaf.setHeadingFromThrower(entity, entity.rotationPitch, entity.rotationYaw, 0.0F, 1.0F, 0.0F);
+	              
+	              entity.getEntityWorld().spawnEntityInWorld(leaf);
+	              stack.damageItem(1, (EntityPlayer)entity);
+	              if (stack.getItemDamage() == stack.getMaxDamage()) {
+	                entity.replaceItemInInventory(itemSlot, null);
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	    else {
+	      stack.setTagCompound(new NBTTagCompound());
+	    }
+	  }
+	  
+	  public float getStrVsBlock(ItemStack stack, IBlockState state)
+	  {
+	    return (!state.getBlock().equals(Blocks.TALLGRASS)) || (!state.equals(Blocks.GRASS)) ? 0.0F : 1.0F;
+	  }
+	  
+	  public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving)
+	  {
+	    return (!world.getBlockState(pos).getBlock().equals(Blocks.TALLGRASS)) || (!world.getBlockState(pos).equals(Blocks.GRASS));
+	  }
+	  
+	  public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged)
+	  {
+	    return slotChanged;
+	  }
+
+}

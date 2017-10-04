@@ -1,0 +1,13 @@
+[
+{
+  "modid": "hempfarmer",
+  "name": "HempFarmer",
+  "version": "${version}",
+  "description": "Adds hemp to Minecraft!",
+  "url": "http://minecraft.curseforge.com/projects/hempfarmer",
+  "updateUrl": "http://mods.curse.com/mc-mods/minecraft/245575-hempfarmer",
+  "authorList": ["SeqSEE", "EPICTHUNDERCAT"],
+  "credits": "Thanks to SihenZhang, DAsh0t and Maxwelljonez and everyone else that made this possible!",
+  "logoFile": "icon.png"
+}
+]
