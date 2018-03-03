@@ -34,7 +34,8 @@ public class Joint extends HFDrug {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.EAT;
+		return EnumAction.BOW;
+		
 	}
 
 	@Override
@@ -45,9 +46,9 @@ public class Joint extends HFDrug {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		playerIn.setActiveHand(handIn);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-	}
+	 playerIn.setActiveHand(handIn);
+		 ItemStack itemstack = playerIn.getHeldItem(handIn);
+		    return new ActionResult(EnumActionResult.SUCCESS, itemstack);}
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
