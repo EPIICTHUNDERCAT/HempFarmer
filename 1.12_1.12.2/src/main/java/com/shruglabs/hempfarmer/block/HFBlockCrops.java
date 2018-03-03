@@ -13,7 +13,7 @@ public class HFBlockCrops extends BlockCrops {
 	public HFBlockCrops(String name) {
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFCrops);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToBlocks(this);
 
 	}

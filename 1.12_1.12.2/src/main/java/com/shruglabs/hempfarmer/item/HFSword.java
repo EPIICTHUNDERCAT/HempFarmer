@@ -21,9 +21,9 @@ public class HFSword extends ItemSword{
 		material.setRepairItem(new ItemStack(item));
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFCombat);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		this.setMaxDamage(material.getMaxUses());
-		this.attackDamage = 3.0F + this.material.getDamageVsEntity();
+		this.attackDamage = 3.0F + this.material.getAttackDamage();
 		addToItems(this);
 	}
 

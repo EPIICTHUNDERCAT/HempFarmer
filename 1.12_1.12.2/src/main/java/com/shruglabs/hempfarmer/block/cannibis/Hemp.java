@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.shruglabs.hempfarmer.ConfigHandler;
 import com.shruglabs.hempfarmer.block.HFBlockCrops;
 import com.shruglabs.hempfarmer.init.HFItems;
 
@@ -18,9 +19,7 @@ import net.minecraft.world.World;
 
 public class Hemp extends HFBlockCrops {
 
-	public static int seedsCropAmount;
-	public static int hempAmount;
-	public static int budAmount;
+
 
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
 	private static final AxisAlignedBB[] HEMP_AABB = new AxisAlignedBB[] {
@@ -75,11 +74,11 @@ public class Hemp extends HFBlockCrops {
 
 		if (age >= getMaxAge()) {
 			if (rand.nextInt(2 * getMaxAge()) <= age) {
-				ret.add(new ItemStack(this.getSeed(), Hemp.seedsCropAmount));
+				ret.add(new ItemStack(this.getSeed(), ConfigHandler.hempSeedsCropAmount));
 				if (this.getCropName() == "bud") {
-					ret.add(new ItemStack(this.getCrop(), Hemp.budAmount));
+					ret.add(new ItemStack(this.getCrop(), ConfigHandler.hempBudAmount));
 				} else {
-					ret.add(new ItemStack(this.getCrop(), Hemp.hempAmount));
+					ret.add(new ItemStack(this.getCrop(), ConfigHandler.hempAmount));
 				}
 
 			}

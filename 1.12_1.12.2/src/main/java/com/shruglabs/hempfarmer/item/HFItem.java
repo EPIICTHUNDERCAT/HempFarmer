@@ -11,7 +11,7 @@ public class HFItem extends Item {
 		this.setMaxStackSize(maxStack);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFMisc);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToItems(this);
 	}
 	

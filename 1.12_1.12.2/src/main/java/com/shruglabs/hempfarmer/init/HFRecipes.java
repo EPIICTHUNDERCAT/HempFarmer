@@ -11,7 +11,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class HFRecipes {
-
+/*
 	public static void registerRecipes(FMLPreInitializationEvent preEvent) {
 		//Repair Wand //- Crafting Recipe
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(HFItems.superior_leaf_wand), new Object[]{new ItemStack(HFItems.broken_superior_leaf_wand), new ItemStack(HFItems.resin

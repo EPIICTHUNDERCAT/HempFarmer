@@ -26,7 +26,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class HFBlocks  {
 
@@ -54,14 +54,16 @@ public class HFBlocks  {
 		return blocks;
 	}
 
+	
+
 	public static void register(FMLPreInitializationEvent preEvent) {
 		for (Block block : blockList()) {
 			ItemBlock iBlock = new ItemBlock(block);
 			if (block.getRegistryName().toString().endsWith("_crop")) {
 				iBlock.setMaxStackSize(1);
 			}
-			GameRegistry.register(block);
-			GameRegistry.register(iBlock, block.getRegistryName());
+			ForgeRegistries.BLOCKS.register(block);
+			ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 		}
 	}
 

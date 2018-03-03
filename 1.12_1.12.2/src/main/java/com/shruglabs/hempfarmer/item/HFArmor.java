@@ -1,5 +1,6 @@
 package com.shruglabs.hempfarmer.item;
 
+import com.shruglabs.hempfarmer.ConfigHandler;
 import com.shruglabs.hempfarmer.creativetab.HFCreativeTabs;
 import com.shruglabs.hempfarmer.init.HFItems;
 
@@ -17,8 +18,6 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class HFArmor extends ItemArmor {
 
-	public static boolean particles;
-	public static boolean buffs;
 
 	public static ArmorMaterial BURLAP = EnumHelper.addArmorMaterial("BURLAP", "hempfarmer:burlap", 7,
 			new int[] { 1, 2, 3, 1 }, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
@@ -35,7 +34,7 @@ public class HFArmor extends ItemArmor {
 		super(material, renderIndex, armorType);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFCombat);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToItems(this);
 	}
 
@@ -46,11 +45,11 @@ public class HFArmor extends ItemArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
 		if (world.getWorldTime() % 5 == 0) {
-			if (HFArmor.particles)
+			if (ConfigHandler.particles)
 				updateParticles(world, player, this.getArmorMaterial());
 		}
 		if (world.getWorldTime() % 3 == 0) {
-			if (HFArmor.buffs)
+			if (ConfigHandler.buffs)
 				updateBuffs(world, player, this.getArmorMaterial());
 		}
 

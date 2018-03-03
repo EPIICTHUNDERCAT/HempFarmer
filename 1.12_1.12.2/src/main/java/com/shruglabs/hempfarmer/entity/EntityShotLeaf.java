@@ -1,8 +1,8 @@
 package com.shruglabs.hempfarmer.entity;
 
+import com.shruglabs.hempfarmer.ConfigHandler;
 import com.shruglabs.hempfarmer.block.HFBlockCrops;
 import com.shruglabs.hempfarmer.init.HFBlocks;
-import com.shruglabs.hempfarmer.init.HFItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -13,7 +13,6 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
@@ -23,9 +22,7 @@ import net.minecraft.world.World;
 
 public class EntityShotLeaf extends EntityThrowable {
 
-	public static boolean entity;
-	public static boolean player;
-	public static boolean block;
+
 	private EntityLivingBase shooter;
 
 	public EntityShotLeaf(World worldIn) {
@@ -69,7 +66,7 @@ public class EntityShotLeaf extends EntityThrowable {
 	protected void onImpact(RayTraceResult result) {
 		World world = this.world;
 		if (result.typeOfHit.equals(Type.ENTITY) && !result.entityHit.equals(this.getShooter())) {
-			if (result.entityHit instanceof EntityPlayer && player) {
+			if (result.entityHit instanceof EntityPlayer && ConfigHandler.playerMutate) {
 				EntityLivingBase entity = (EntityLivingBase) result.entityHit;
 				if (!world.isRemote) {
 					entity.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 100, 1, false, false));
@@ -78,7 +75,7 @@ public class EntityShotLeaf extends EntityThrowable {
 					entity.addPotionEffect(new PotionEffect(Potion.getPotionById(11), 500, 5, false, false));
 				}
 			}
-			if (result.entityHit instanceof EntityLiving && entity) {
+			if (result.entityHit instanceof EntityLiving && ConfigHandler.entityMutate) {
 				EntityLivingBase entity = (EntityLivingBase) result.entityHit;
 				if (!world.isRemote) {
 					if (entity instanceof EntityZombie) {
@@ -98,7 +95,7 @@ public class EntityShotLeaf extends EntityThrowable {
 			}
 		}
 
-		if (result.typeOfHit.equals(Type.BLOCK) && block) {
+		if (result.typeOfHit.equals(Type.BLOCK) && ConfigHandler.blockMutate) {
 			if (!world.isRemote) {
 				Block block = world.getBlockState(result.getBlockPos()).getBlock();
 				if (!block.equals(Blocks.TALLGRASS) && !block.equals(Blocks.GRASS)) {

@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
 @Mod(updateJSON = Reference.UPDATE, modid = Reference.ID, name = Reference.NAME, version = Reference.VER)
 public class HempFarmer {
-	public static Configuration config;
+
 	@Instance(value = "hempfarmer")
 	public static HempFarmer instance;
 

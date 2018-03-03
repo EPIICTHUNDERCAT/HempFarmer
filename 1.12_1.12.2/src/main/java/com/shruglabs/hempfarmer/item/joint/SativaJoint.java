@@ -12,7 +12,7 @@ public class SativaJoint extends Joint {
 
 	public SativaJoint(String name, int maxStack) {
 		super(name, maxStack);
-		this.itemUseDuration = 16;
+	
 	}
 
 	@Override

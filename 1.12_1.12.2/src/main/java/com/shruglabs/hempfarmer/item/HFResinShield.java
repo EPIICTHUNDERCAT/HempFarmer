@@ -44,7 +44,7 @@ public class HFResinShield extends ItemShield {
 	@Override
 	@SideOnly(Side.CLIENT)
     public CreativeTabs getCreativeTab() {
-        return HFCreativeTabs.HFCombat;
+        return HFCreativeTabs.HempFarmer;
     }
 	
 	@Override

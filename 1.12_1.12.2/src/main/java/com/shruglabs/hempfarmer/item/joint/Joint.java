@@ -18,11 +18,10 @@ import net.minecraft.world.World;
 
 public class Joint extends HFDrug {
 
-	public int itemUseDuration;
+
 
 	public Joint(String name, int maxStack) {
 		super(name, maxStack);
-		this.itemUseDuration = 16;
 
 	}
 
@@ -31,7 +30,13 @@ public class Joint extends HFDrug {
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
 		return EnumActionResult.SUCCESS;
 	}
-
+	  /**
+     * How long it takes to use or consume an item
+     */@Override
+    public int getMaxItemUseDuration(ItemStack stack)
+    {
+        return 32;
+    }
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.EAT;

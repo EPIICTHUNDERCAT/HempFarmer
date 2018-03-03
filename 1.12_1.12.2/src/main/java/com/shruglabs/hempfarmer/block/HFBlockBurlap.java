@@ -26,7 +26,7 @@ public class HFBlockBurlap extends Block {
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
 		this.blockSoundType = SoundType.PLANT;
-		this.setCreativeTab(HFCreativeTabs.HFMisc);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToBlocks(this);
 	}
 

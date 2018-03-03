@@ -13,37 +13,13 @@ public class HFCreativeTabs extends CreativeTabs {
 		super(index, label);
 	}
 
-	public static final HFCreativeTabs HFCombat = new HFCreativeTabs(CreativeTabs.getNextID(), "hfcombat") {
+	public static final HFCreativeTabs HempFarmer = new HFCreativeTabs(CreativeTabs.getNextID(), "hempfarmer") {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem() {
-			return new ItemStack(HFItems.resin_sword);
+			return new ItemStack(HFItems.indica_joint);
 		}
 	};
-	public static final HFCreativeTabs HFCrops = new HFCreativeTabs(CreativeTabs.getNextID(), "hfcrops") {
-		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem() {
-			return new ItemStack(HFItems.leaf);
-		}
-	};
-
-	public static final HFCreativeTabs HFMisc = new HFCreativeTabs(CreativeTabs.getNextID(), "hfmisc") {
-		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem() {
-			return new ItemStack(HFItems.hemp_oil);
-		}
-	};
-	public static final HFCreativeTabs HFDrugs = new HFCreativeTabs(CreativeTabs.getNextID(), "hfdrugs") {
-		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem() {
-			return new ItemStack(HFItems.regs_joint);
-		}
-	};
-	public static final HFCreativeTabs HFFoods = new HFCreativeTabs(CreativeTabs.getNextID(), "hffoods") {
-		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem() {
-			return new ItemStack(HFItems.bowl_hemp_hearts);
-		}
-	};
+	
 
 	@Override
 	public ItemStack getTabIconItem() {

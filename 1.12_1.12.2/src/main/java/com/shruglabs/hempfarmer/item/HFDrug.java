@@ -11,7 +11,7 @@ public class HFDrug extends Item {
 		this.setMaxStackSize(maxStack);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFDrugs);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToItems(this);
 	}
 

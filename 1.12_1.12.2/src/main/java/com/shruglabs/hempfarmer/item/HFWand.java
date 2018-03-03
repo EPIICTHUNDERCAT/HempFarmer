@@ -1,5 +1,6 @@
 package com.shruglabs.hempfarmer.item;
 
+import com.shruglabs.hempfarmer.ConfigHandler;
 import com.shruglabs.hempfarmer.entity.EntityShotLeaf;
 import com.shruglabs.hempfarmer.init.HFItems;
 
@@ -18,16 +19,13 @@ import net.minecraft.world.World;
 
 public class HFWand extends HFItem {
 
-	public static int leafDamage;
-	public static int superiorDamage;
-
 	public HFWand(String name) {
 		super(name, 1);
 		if (this.equals(HFItems.superior_leaf_wand)) {
-			this.setMaxDamage(superiorDamage);
+			this.setMaxDamage(ConfigHandler.leafSuperiorDamage);
 			this.setContainerItem(HFItems.broken_superior_leaf_wand);
 		} else {
-			this.setMaxDamage(leafDamage);
+			this.setMaxDamage(ConfigHandler.leafDamage);
 			this.setContainerItem(Items.STICK);
 		}
 	}
@@ -73,9 +71,8 @@ public class HFWand extends HFItem {
 									world.playSound((EntityPlayer) null, entity.posX, entity.posY, entity.posZ,
 											SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 1.5F, 10.0F);
 									EntityShotLeaf leaf = new EntityShotLeaf(world, (EntityLivingBase) entity);
-									leaf.setHeadingFromThrower(entity, entity.rotationPitch, entity.rotationYaw, 0.0F,
-											1.0F, 0.0F);
-									entity.getEntityWorld().spawnEntity(leaf);
+									
+									world.spawnEntity(leaf);
 									stack.damageItem(1, (EntityPlayer) entity);
 									if (stack.getItemDamage() == stack.getMaxDamage()) {
 

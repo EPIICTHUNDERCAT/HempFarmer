@@ -9,6 +9,7 @@ import com.shruglabs.hempfarmer.init.HFItems;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -20,13 +21,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class PotBrownie extends ItemFood {
-	public final int itemUseDuration;
+	
 	public PotBrownie(String name) {
 		super(2, 0.0F, false);
-		this.itemUseDuration = 16;
+		
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFFoods);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		this.setAlwaysEdible();
 		addToItems(this);
 	}
@@ -34,6 +35,11 @@ public class PotBrownie extends ItemFood {
 	public void addToItems(Item item) {
 		HFItems.items.add(item);
 	}
+
+@Override
+public EnumAction getItemUseAction(ItemStack stack) {
+	return EnumAction.EAT;
+}
 
 	
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn,

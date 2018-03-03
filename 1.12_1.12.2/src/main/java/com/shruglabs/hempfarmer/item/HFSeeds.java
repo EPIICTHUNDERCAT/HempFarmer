@@ -24,7 +24,7 @@ public class HFSeeds extends ItemSeeds implements net.minecraftforge.common.IPla
 		this.crops = crop;
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFCrops);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToItems(this);
 	}
 

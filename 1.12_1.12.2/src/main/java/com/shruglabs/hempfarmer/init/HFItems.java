@@ -3,6 +3,7 @@ package com.shruglabs.hempfarmer.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.shruglabs.hempfarmer.ConfigHandler;
 import com.shruglabs.hempfarmer.item.HFArmor;
 import com.shruglabs.hempfarmer.item.HFDrug;
 import com.shruglabs.hempfarmer.item.HFEntityItem;
@@ -26,18 +27,15 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class HFItems  {
+public class HFItems {
 	public static List<Item> items = new ArrayList<Item>();
-	public static Item shot_leaf = new HFEntityItem("shot_leaf");
+
 	public static Item regs_joint = new Joint("regs_joint", 5);
 	public static Item indica_joint = new IndicaJoint("indica_joint", 5);
 	public static Item sativa_joint = new SativaJoint("sativa_joint", 5);
 	public static Item pot_brownie = new PotBrownie("pot_brownie");
-	public static Item leaf = new HFItem("leaf", 64);
-	public static Item leaf_wand = new HFWand("leaf_wand");
-	public static Item superior_leaf_wand = new HFWand("superior_leaf_wand");
 	public static Item bud = new HFDrug("bud", 64);
 	public static Item indica_bud = new HFDrug("indica_bud", 64);
 	public static Item sativa_bud = new HFDrug("sativa_bud", 64);
@@ -55,41 +53,6 @@ public class HFItems  {
 	public static Item seeds_hemp = new HFSeeds("seeds_hemp", HFBlocks.hemp_crop);
 	public static Item seeds_indica = new HFSeeds("seeds_indica", HFBlocks.indica_crop);
 	public static Item seeds_sativa = new HFSeeds("seeds_sativa", HFBlocks.sativa_crop);
-	public static Item burlap_boots = new HFArmor("burlap_boots", HFArmor.BURLAP, 1, EntityEquipmentSlot.FEET);
-	public static Item burlap_leggings = new HFArmor("burlap_leggings", HFArmor.BURLAP, 1, EntityEquipmentSlot.LEGS);
-	public static Item burlap_chestplate = new HFArmor("burlap_chestplate", HFArmor.BURLAP, 1,
-			EntityEquipmentSlot.CHEST);
-	public static Item burlap_helmet = new HFArmor("burlap_helmet", HFArmor.BURLAP, 1, EntityEquipmentSlot.HEAD);
-	public static Item lime_burlap_boots = new HFArmor("lime_burlap_boots", HFArmor.LIME_BURLAP, 1,
-			EntityEquipmentSlot.FEET);
-	public static Item lime_burlap_leggings = new HFArmor("lime_burlap_leggings", HFArmor.LIME_BURLAP, 1,
-			EntityEquipmentSlot.LEGS);
-	public static Item lime_burlap_chestplate = new HFArmor("lime_burlap_chestplate", HFArmor.LIME_BURLAP, 1,
-			EntityEquipmentSlot.CHEST);
-	public static Item lime_burlap_helmet = new HFArmor("lime_burlap_helmet", HFArmor.LIME_BURLAP, 1,
-			EntityEquipmentSlot.HEAD);
-	public static Item violet_burlap_boots = new HFArmor("violet_burlap_boots", HFArmor.VIOLET_BURLAP, 1,
-			EntityEquipmentSlot.FEET);
-	public static Item violet_burlap_leggings = new HFArmor("violet_burlap_leggings", HFArmor.VIOLET_BURLAP, 1,
-			EntityEquipmentSlot.LEGS);
-	public static Item violet_burlap_chestplate = new HFArmor("violet_burlap_chestplate", HFArmor.VIOLET_BURLAP, 1,
-			EntityEquipmentSlot.CHEST);
-	public static Item violet_burlap_helmet = new HFArmor("violet_burlap_helmet", HFArmor.VIOLET_BURLAP, 1,
-			EntityEquipmentSlot.HEAD);
-	public static Item resin_burlap_boots = new HFArmor("resin_burlap_boots", HFArmor.RESIN_BURLAP, 1,
-			EntityEquipmentSlot.FEET);
-	public static Item resin_burlap_leggings = new HFArmor("resin_burlap_leggings", HFArmor.RESIN_BURLAP, 1,
-			EntityEquipmentSlot.LEGS);
-	public static Item resin_burlap_chestplate = new HFArmor("resin_burlap_chestplate", HFArmor.RESIN_BURLAP, 1,
-			EntityEquipmentSlot.CHEST);
-	public static Item resin_burlap_helmet = new HFArmor("resin_burlap_helmet", HFArmor.RESIN_BURLAP, 1,
-			EntityEquipmentSlot.HEAD);
-	public static Item resin_boots = new HFArmor("resin_boots", HFArmor.RESIN, 1, EntityEquipmentSlot.FEET);
-	public static Item resin_leggings = new HFArmor("resin_leggings", HFArmor.RESIN, 1, EntityEquipmentSlot.LEGS);
-	public static Item resin_chestplate = new HFArmor("resin_chestplate", HFArmor.RESIN, 1, EntityEquipmentSlot.CHEST);
-	public static Item resin_helmet = new HFArmor("resin_helmet", HFArmor.RESIN, 1, EntityEquipmentSlot.HEAD);
-	public static Item resin_shield = new HFResinShield("resin_shield");
-	public static Item resin_sword = new HFSword("resin_sword", HFSword.RESIN, resin);
 	public static Item hemp_paper = new HFItem("hemp_paper", 64);
 	public static Item hemp_milk_bucket = new HempMilkBucket("hemp_milk_bucket", 1);
 	public static Item hemp_hearts = new HempFood("hemp_hearts", 2, 2.0F);
@@ -104,22 +67,65 @@ public class HFItems  {
 	public static Item seeds_indica_crushed = new HempFood("seeds_indica_crushed", 1, 0.5F);
 	public static Item seeds_sativa_toasted = new HFItem("seeds_sativa_toasted", 64);
 	public static Item seeds_sativa_crushed = new HempFood("seeds_sativa_crushed", 1, 0.5F);
-	public static Item broken_superior_leaf_wand = new HFItem("broken_superior_leaf_wand", 1);
-	
 
-	public static List<Item> itemList() {
+	public static Item shot_leaf = ConfigHandler.enableWand ? new HFEntityItem("shot_leaf") : null;
+	public static Item leaf = ConfigHandler.enableWand ? new HFItem("leaf", 64) : null;
+	public static Item leaf_wand = ConfigHandler.enableWand ? new HFWand("leaf_wand") : null;
+	public static Item superior_leaf_wand = ConfigHandler.enableWand ? new HFWand("superior_leaf_wand") : null;
+	public static Item broken_superior_leaf_wand = ConfigHandler.enableWand ? new HFItem("broken_superior_leaf_wand", 1) : null;
+
+	public static Item burlap_boots =  ConfigHandler.enableToolsandWeapons ? new HFArmor("burlap_boots", HFArmor.BURLAP, 1, EntityEquipmentSlot.FEET) : null;
+	public static Item burlap_leggings = ConfigHandler.enableToolsandWeapons ? new HFArmor("burlap_leggings", HFArmor.BURLAP, 1, EntityEquipmentSlot.LEGS) : null;
+	public static Item burlap_chestplate = ConfigHandler.enableToolsandWeapons ? new HFArmor("burlap_chestplate", HFArmor.BURLAP, 1,
+			EntityEquipmentSlot.CHEST) : null;
+	public static Item burlap_helmet = ConfigHandler.enableToolsandWeapons ? new HFArmor("burlap_helmet", HFArmor.BURLAP, 1, EntityEquipmentSlot.HEAD) : null;
+	public static Item lime_burlap_boots = ConfigHandler.enableToolsandWeapons ? new HFArmor("lime_burlap_boots", HFArmor.LIME_BURLAP, 1,
+			EntityEquipmentSlot.FEET) : null;
+	public static Item lime_burlap_leggings = ConfigHandler.enableToolsandWeapons ? new HFArmor("lime_burlap_leggings", HFArmor.LIME_BURLAP, 1,
+			EntityEquipmentSlot.LEGS) : null;
+	public static Item lime_burlap_chestplate = ConfigHandler.enableToolsandWeapons ? new HFArmor("lime_burlap_chestplate", HFArmor.LIME_BURLAP, 1,
+			EntityEquipmentSlot.CHEST) : null;
+	public static Item lime_burlap_helmet = ConfigHandler.enableToolsandWeapons ? new HFArmor("lime_burlap_helmet", HFArmor.LIME_BURLAP, 1,
+			EntityEquipmentSlot.HEAD) : null;
+	public static Item violet_burlap_boots = ConfigHandler.enableToolsandWeapons ? new HFArmor("violet_burlap_boots", HFArmor.VIOLET_BURLAP, 1,
+			EntityEquipmentSlot.FEET) : null;
+	public static Item violet_burlap_leggings = ConfigHandler.enableToolsandWeapons ? new HFArmor("violet_burlap_leggings", HFArmor.VIOLET_BURLAP, 1,
+			EntityEquipmentSlot.LEGS) : null;
+	public static Item violet_burlap_chestplate = ConfigHandler.enableToolsandWeapons ? new HFArmor("violet_burlap_chestplate", HFArmor.VIOLET_BURLAP, 1,
+			EntityEquipmentSlot.CHEST) : null;
+	public static Item violet_burlap_helmet = ConfigHandler.enableToolsandWeapons ? new HFArmor("violet_burlap_helmet", HFArmor.VIOLET_BURLAP, 1,
+			EntityEquipmentSlot.HEAD) : null;
+	public static Item resin_burlap_boots = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_burlap_boots", HFArmor.RESIN_BURLAP, 1,
+			EntityEquipmentSlot.FEET) : null;
+	public static Item resin_burlap_leggings = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_burlap_leggings", HFArmor.RESIN_BURLAP, 1,
+			EntityEquipmentSlot.LEGS) : null;
+	public static Item resin_burlap_chestplate = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_burlap_chestplate", HFArmor.RESIN_BURLAP, 1,
+			EntityEquipmentSlot.CHEST) : null;
+	public static Item resin_burlap_helmet = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_burlap_helmet", HFArmor.RESIN_BURLAP, 1,
+			EntityEquipmentSlot.HEAD) : null;
+	public static Item resin_boots = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_boots", HFArmor.RESIN, 1, EntityEquipmentSlot.FEET) : null;
+	public static Item resin_leggings = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_leggings", HFArmor.RESIN, 1, EntityEquipmentSlot.LEGS) : null;
+	public static Item resin_chestplate = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_chestplate", HFArmor.RESIN, 1, EntityEquipmentSlot.CHEST) : null;
+	public static Item resin_helmet = ConfigHandler.enableToolsandWeapons ? new HFArmor("resin_helmet", HFArmor.RESIN, 1, EntityEquipmentSlot.HEAD) : null;
+	public static Item resin_shield = ConfigHandler.enableToolsandWeapons ? new HFResinShield("resin_shield") : null;
+	public static Item resin_sword = ConfigHandler.enableToolsandWeapons ? new HFSword("resin_sword", HFSword.RESIN, resin) : null;
+
+	private static List<Item> getItems() {
 		return items;
+
 	}
 
 	public static void register(FMLPreInitializationEvent preEvent) {
-		for (Item item : itemList()) {
-			GameRegistry.register(item);
+		for (Item item : getItems()) {
+			if (item != null) {
+				ForgeRegistries.ITEMS.register(item);
+			}
 		}
 	}
 
 	public static void registerRender(FMLInitializationEvent event) {
 		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-		for (Item item : itemList()) {
+		for (Item item : getItems()) {
 			renderItem.getItemModelMesher().register(item, 0,
 					new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 		}

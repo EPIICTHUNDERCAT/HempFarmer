@@ -12,7 +12,7 @@ public class HempFood extends ItemFood {
 		super(amount, saturation, false);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(HFCreativeTabs.HFFoods);
+		this.setCreativeTab(HFCreativeTabs.HempFarmer);
 		addToItems(this);
 	}
 

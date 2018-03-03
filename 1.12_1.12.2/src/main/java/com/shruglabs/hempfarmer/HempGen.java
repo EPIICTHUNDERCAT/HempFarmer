@@ -12,8 +12,8 @@ import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenBush;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -65,10 +65,9 @@ public class HempGen implements IWorldGenerator {
 					BlockPos blockpos = position.add(rand.nextInt(4) - rand.nextInt(4),
 							rand.nextInt(4) - rand.nextInt(4), rand.nextInt(4) - rand.nextInt(8));
 					Biome biome = worldIn.getBiomeForCoordsBody(blockpos);
-					if (biome.getTempCategory() == Biome.TempCategory.WARM || biome.getTempCategory() == Biome.TempCategory.MEDIUM
-							 || this.biomes.contains(biome)) {
-						if (worldIn.isAirBlock(blockpos)
-								&& (!worldIn.provider.hasNoSky() || blockpos.getY() < worldIn.getHeight() - 1)
+					if (biome.getTempCategory() == Biome.TempCategory.WARM
+							|| biome.getTempCategory() == Biome.TempCategory.MEDIUM || this.biomes.contains(biome)) {
+						if (worldIn.isAirBlock(blockpos) && (blockpos.getY() < worldIn.getHeight() - 1)
 								&& ((BlockCrops) HFBlocks.hemp_crop).canBlockStay(worldIn, blockpos,
 										HFBlocks.hemp_crop.getDefaultState())) {
 							worldIn.setBlockState(blockpos, HFBlocks.hemp_crop.getDefaultState()
@@ -117,8 +116,7 @@ public class HempGen implements IWorldGenerator {
 							rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 					Biome biome = worldIn.getBiomeForCoordsBody(blockpos);
 					if (biome.getTempCategory() == Biome.TempCategory.WARM || this.biomes.contains(biome)) {
-						if (worldIn.isAirBlock(blockpos)
-								&& (!worldIn.provider.hasNoSky() || blockpos.getY() < worldIn.getHeight() - 1)
+						if (worldIn.isAirBlock(blockpos) && (blockpos.getY() < worldIn.getHeight() - 1)
 								&& ((BlockCrops) HFBlocks.indica_crop).canBlockStay(worldIn, blockpos,
 										HFBlocks.indica_crop.getDefaultState())) {
 							worldIn.setBlockState(blockpos, HFBlocks.indica_crop.getDefaultState()
@@ -167,8 +165,7 @@ public class HempGen implements IWorldGenerator {
 							rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 					Biome biome = worldIn.getBiomeForCoordsBody(blockpos);
 					if (biome.getTempCategory() == Biome.TempCategory.WARM || this.biomes.contains(biome)) {
-						if (worldIn.isAirBlock(blockpos)
-								&& (!worldIn.provider.hasNoSky() || blockpos.getY() < worldIn.getHeight() - 1)
+						if (worldIn.isAirBlock(blockpos) && (blockpos.getY() < worldIn.getHeight() - 1)
 								&& ((BlockCrops) HFBlocks.sativa_crop).canBlockStay(worldIn, blockpos,
 										HFBlocks.sativa_crop.getDefaultState())) {
 							worldIn.setBlockState(blockpos, HFBlocks.sativa_crop.getDefaultState()
