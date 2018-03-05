@@ -1,13 +1,14 @@
 {
   "type": "forge:ore_shaped",
-  "pattern": [ "hh", "hh"],
+  "pattern": ["b b", "bbb", "bbb"],
   "key":{
-    "h": {
+    
+    "b":{
         "item": "hempfarmer:resin_burlap"
     }
   },
   "result": {
-    "item": "hempfarmer:resin_burlap_block",
+    "item": "hempfarmer:resin_burlap_chestplate",
     "count": 1
   }
 }
