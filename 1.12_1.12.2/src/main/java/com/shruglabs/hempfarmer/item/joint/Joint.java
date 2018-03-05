@@ -1,6 +1,7 @@
 package com.shruglabs.hempfarmer.item.joint;
 
 import com.shruglabs.hempfarmer.item.HFDrug;
+import com.shruglabs.hempfarmer.utils.HUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -76,15 +77,19 @@ public class Joint extends HFDrug {
 	}
 
 	public void smoke(EntityLivingBase entity, World world) {
-		double x = entity.posX;
+		HUtils.spawnParticles(entity, EnumParticleTypes.SMOKE_NORMAL, 5, entity.posX, entity.posY + 1.5, entity.posZ + 0.5, 0, 0, 0, 0.5);
+		
+		HUtils.spawnParticles(entity, EnumParticleTypes.SMOKE_LARGE, 5, entity.posX, entity.posY + 1.5, entity.posZ + 0.5, 0, 0, 0, 0.5);
+		/*double x = entity.posX;
 		double y = entity.posY + 1.5;
 		double z = entity.posZ;
+		
 		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x - 0.2, y, z - 0.2, -0.05, 0.05, 0.05);
 		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y, z, 0.05, -0.05, 0.05);
 		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x + 0.2, y, z + 0.2, 0.05, 0.05, -0.05);
 		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, y, z - 0.2, 0.05, -0.05, -0.05);
 		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y, z, -0.05, -0.05, 0.05);
-		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, y, z + 0.2, -0.05, -0.05, -0.05);
+		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, y, z + 0.2, -0.05, -0.05, -0.05);*/
 	}
 
 }

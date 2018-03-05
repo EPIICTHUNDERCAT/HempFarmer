@@ -2,6 +2,9 @@ package com.shruglabs.hempfarmer;
 
 import java.util.Random;
 
+import com.shruglabs.hempfarmer.block.cannibis.Hemp;
+import com.shruglabs.hempfarmer.block.cannibis.Indica;
+import com.shruglabs.hempfarmer.block.cannibis.Sativa;
 import com.shruglabs.hempfarmer.init.HFBlocks;
 
 import net.minecraft.block.material.Material;
@@ -35,12 +38,12 @@ public class HempGenDecor  implements IWorldGenerator{
 //System.out.println("is genning");
 		if ((event.getResult() == Event.Result.ALLOW || event.getResult() == Event.Result.DEFAULT)) {
 			if (event.getType() == EventType.FLOWERS) {
-				this.genPlantNormally(HFBlocks.hemp_crop.getDefaultState(), ConfigHandler.hempCropSpawnAmount,
+				this.genPlantNormally(HFBlocks.hemp_crop.getDefaultState().withProperty(Hemp.AGE, 7), ConfigHandler.hempCropSpawnAmount,
 						ConfigHandler.hempCropSpawn, Material.GRASS, event);
 
-				this.genPlantNormally(HFBlocks.sativa_crop.getDefaultState(), ConfigHandler.sativaCropSpawnAmount,
+				this.genPlantNormally(HFBlocks.sativa_crop.getDefaultState().withProperty(Sativa.AGE, 7), ConfigHandler.sativaCropSpawnAmount,
 						ConfigHandler.sativaCropSpawn, Material.GRASS, event);
-				this.genPlantNormally(HFBlocks.indica_crop.getDefaultState(), ConfigHandler.indicaCropSpawnAmount,
+				this.genPlantNormally(HFBlocks.indica_crop.getDefaultState().withProperty(Indica.AGE, 7), ConfigHandler.indicaCropSpawnAmount,
 						ConfigHandler.indicaCropSpawn, Material.GRASS, event);
 			}
 		}
@@ -60,8 +63,8 @@ public class HempGenDecor  implements IWorldGenerator{
 						if (plant.getBlock().canPlaceBlockAt(event.getWorld(), randomPos)
 								&& event.getWorld().isAirBlock(randomPos)) {
 							event.getWorld().setBlockState(randomPos, plant, 2);
-							System.out.println(randomPos);
-							System.out.println("is being reached");
+						//	System.out.println(randomPos);
+						//	System.out.println("is being reached");
 						}
 					}
 				}

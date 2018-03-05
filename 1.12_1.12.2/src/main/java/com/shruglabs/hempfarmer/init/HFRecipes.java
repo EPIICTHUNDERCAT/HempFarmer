@@ -1,98 +1,37 @@
 package com.shruglabs.hempfarmer.init;
 
-import com.shruglabs.hempfarmer.item.HFOil;
-
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HFRecipes {
+	@SubscribeEvent
+
+	  public static void FurnaceRegister(FMLPreInitializationEvent event){
+		
+	    FurnaceRecipes.instance().addSmelting(HFItems.raw_hemp, new ItemStack(Items.BUCKET), 0.1F);
+	    FurnaceRecipes.instance().addSmelting(HFItems.violet_raw_hemp, new ItemStack(HFItems.violet_dry_hemp), 0.1F);
+	    FurnaceRecipes.instance().addSmelting(HFItems.hemp_oil, new ItemStack(HFItems.resin), 0.1F);
+	    FurnaceRecipes.instance().addSmeltingRecipeForBlock(HFBlocks.oily_burlap, new ItemStack(HFBlocks.resin_burlap), 0.1F);
+	    FurnaceRecipes.instance().addSmeltingRecipeForBlock(HFBlocks.oily_burlap_block, new ItemStack(HFBlocks.resin_burlap_block),
+				0.1F);
+	    FurnaceRecipes.instance().addSmelting(HFItems.lime_raw_hemp, new ItemStack(HFItems.lime_dry_hemp), 0.1F);
+	    FurnaceRecipes.instance().addSmelting(HFItems.seeds_hemp, new ItemStack(HFItems.seeds_hemp_toasted), 0.1F);
+	    FurnaceRecipes.instance().addSmelting(HFItems.seeds_indica, new ItemStack(HFItems.seeds_indica_toasted),
+				0.1F);
+	    FurnaceRecipes.instance().addSmelting(HFItems.seeds_sativa, new ItemStack(HFItems.seeds_sativa_toasted),
+				0.1F);
+		  }
+	
+	
 /*
 	public static void registerRecipes(FMLPreInitializationEvent preEvent) {
 		//Repair Wand //- Crafting Recipe
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(HFItems.superior_leaf_wand), new Object[]{new ItemStack(HFItems.broken_superior_leaf_wand), new ItemStack(HFItems.resin
-				)}));	
-		
-		//Cake //- Crafting Recipe
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(Items.CAKE),
-				new Object[] {"mmm", "ses", "www", 'm', "listAllmilk", 'w', new ItemStack(Items.WHEAT), 's', new ItemStack(Items.SUGAR), 'e', new ItemStack(Items.EGG)}));
-		// Dried Hemp//- Smelting Recipe
-		GameRegistry.addSmelting(new ItemStack(HFItems.raw_hemp), new ItemStack(HFItems.dry_hemp), 0.1F);
-		// Lime Dried Hemp//- Smelting Recipe
-		GameRegistry.addSmelting(new ItemStack(HFItems.lime_raw_hemp), new ItemStack(HFItems.lime_dry_hemp), 0.1F);
-		// Violet Dried Hemp//- Smelting Recipe
-		GameRegistry.addSmelting(new ItemStack(HFItems.violet_raw_hemp), new ItemStack(HFItems.violet_dry_hemp), 0.1F);
-		// Hemp Resin//- Smelting Recipe
-		GameRegistry.addSmelting(new ItemStack(HFItems.hemp_oil), new ItemStack(HFItems.resin), 0.1F);
-		// Hemp Paper//- Shapeless recipe
-		GameRegistry.addRecipe(
-				new ShapelessOreRecipe(new ItemStack(HFItems.hemp_paper), new Object[] { "dryHemp", "dryHemp" }));
-		// Resin Burlap//- Smelting Recipe
-		GameRegistry.addSmelting(new ItemStack(HFBlocks.oily_burlap), new ItemStack(HFBlocks.resin_burlap), 0.1F);
-		// Resin Burlap Block//- Smelting Recipe
-		GameRegistry.addSmelting(new ItemStack(HFBlocks.oily_burlap_block), new ItemStack(HFBlocks.resin_burlap_block),
-				0.1F);
-		// Resin Burlap Block//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.resin_burlap_block), "hh", "hh", 'h',
-				new ItemStack(HFBlocks.resin_burlap));
-		// Oily Burlap//- Shapeless Recipe
-		GameRegistry.addShapelessRecipe(new ItemStack(HFBlocks.oily_burlap), new ItemStack(HFBlocks.burlap),
-				new ItemStack(HFItems.hemp_oil));
-		// Oily Burlap Block//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.oily_burlap_block), "hh", "hh", 'h',
-				new ItemStack(HFBlocks.oily_burlap));
-		// Burlap//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.burlap), "hh", "hh", 'h', new ItemStack(HFItems.dry_hemp));
-		// Burlap Block//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.burlap_block), "hh", "hh", 'h', new ItemStack(HFBlocks.burlap));
-		// LimeBurlap//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.lime_burlap), "hh", "hh", 'h',
-				new ItemStack(HFItems.lime_dry_hemp));
-		// Lime Burlap Block//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.lime_burlap_block), "hh", "hh", 'h',
-				new ItemStack(HFBlocks.lime_burlap));
 
-		// VioletBurlap//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.violet_burlap), "hh", "hh", 'h',
-				new ItemStack(HFItems.violet_dry_hemp));
-		// Violet Burlap Block//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(HFBlocks.violet_burlap_block), "hh", "hh", 'h',
-				new ItemStack(HFBlocks.violet_burlap));
-		// Vanilla Lead//- Shaped Recipes
-		GameRegistry.addRecipe(new ItemStack(Items.LEAD), "ss ", "sr ", "  s", 'r', new ItemStack(HFItems.resin), 's',
-				new ItemStack(Items.STRING));
-		GameRegistry.addRecipe(new ItemStack(Items.LEAD), "hh ", "hr ", "  h", 'r', new ItemStack(HFItems.resin), 'h',
-				new ItemStack(HFItems.dry_hemp));
-		GameRegistry.addRecipe(new ItemStack(Items.LEAD), "hh ", "hs ", "  h", 's', new ItemStack(Items.SLIME_BALL),
-				'h', new ItemStack(HFItems.dry_hemp));
-		if(HFOil.glassNeeded){
-			// Hemp Oil//- Shaped Recipe
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.hemp_oil),
-					new Object[] { "sss", "gsg", " g ", 'g', "blockGlass", 's', new ItemStack(HFItems.seeds_hemp) }));
-			// Lime Oil//- Shaped Recipe
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.lime_oil),
-					new Object[] { "sss", "gsg", " g ", 'g', "blockGlass", 's', new ItemStack(HFItems.seeds_sativa) }));
-			// Violet Oil//- Shaped Recipe
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.violet_oil),
-					new Object[] { "sss", "gsg", " g ", 'g', "blockGlass", 's', new ItemStack(HFItems.seeds_indica) }));
 
-		}else{
-			// Hemp Oil//- Shaped Recipe
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.hemp_oil),
-					new Object[] { "sss", " s ", "  ", 's', new ItemStack(HFItems.seeds_hemp) }));
-			// Lime Oil//- Shaped Recipe
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.lime_oil),
-					new Object[] { "sss", " s ", "   ", 's', new ItemStack(HFItems.seeds_sativa) }));
-			// Violet Oil//- Shaped Recipe
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.violet_oil),
-					new Object[] { "sss", " s ", "   ", 's', new ItemStack(HFItems.seeds_indica) }));
-
-		}
 		
 		// Burlap Armor//- Shaped Recipes
 		GameRegistry.addRecipe(new ItemStack(HFItems.burlap_boots), "   ", "b b", "b b", 'b',
@@ -145,10 +84,9 @@ public class HFRecipes {
 		// Resin Shield//- Shaped Recipe
 		GameRegistry.addRecipe(new ItemStack(HFItems.resin_shield), "rrr", "rrr", " r ", 'r',
 				new ItemStack(HFItems.resin));
-		// Seedlings//- Shapeless Recipe
-		GameRegistry.addShapelessRecipe(new ItemStack(HFBlocks.hemp_crop), new ItemStack(HFItems.seeds_hemp));
-		GameRegistry.addShapelessRecipe(new ItemStack(HFBlocks.indica_crop), new ItemStack(HFItems.seeds_indica));
-		GameRegistry.addShapelessRecipe(new ItemStack(HFBlocks.sativa_crop), new ItemStack(HFItems.seeds_sativa));
+				
+
+		
 		// Leaf Wand//- Shaped recipe
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(HFItems.leaf_wand),
 				new Object[] { " l", "s ", 'l', new ItemStack(HFItems.leaf), 's', "stickWood" }));
@@ -191,12 +129,7 @@ public class HFRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(HFItems.sativa_joint), new ItemStack(HFItems.rolling_paper),
 				new ItemStack(HFItems.sativa_bud), new ItemStack(HFItems.sativa_bud),
 				new ItemStack(HFItems.sativa_bud));
-		// Toasted seeds
-		GameRegistry.addSmelting(new ItemStack(HFItems.seeds_hemp), new ItemStack(HFItems.seeds_hemp_toasted), 0.1F);
-		GameRegistry.addSmelting(new ItemStack(HFItems.seeds_indica), new ItemStack(HFItems.seeds_indica_toasted),
-				0.1F);
-		GameRegistry.addSmelting(new ItemStack(HFItems.seeds_sativa), new ItemStack(HFItems.seeds_sativa_toasted),
-				0.1F);
+		
 		// Crushed seeds
 		GameRegistry.addShapelessRecipe(new ItemStack(HFItems.seeds_hemp_crushed),
 				new ItemStack(HFItems.seeds_hemp_toasted),

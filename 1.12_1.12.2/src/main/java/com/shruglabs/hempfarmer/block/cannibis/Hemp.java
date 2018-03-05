@@ -19,8 +19,6 @@ import net.minecraft.world.World;
 
 public class Hemp extends HFBlockCrops {
 
-
-
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
 	private static final AxisAlignedBB[] HEMP_AABB = new AxisAlignedBB[] {
 			new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1328125D, 1.0D),
@@ -45,8 +43,8 @@ public class Hemp extends HFBlockCrops {
 	protected Item getSeed() {
 		Item seed;
 		Random random = new Random();
-		int x = random.nextInt(100) + 1;
-		if (x > 90) {
+		int x = random.nextInt(30) + 1;
+		if (x > 27) {
 			boolean y = random.nextBoolean();
 			seed = y == true ? HFItems.seeds_indica : HFItems.seeds_sativa;
 		} else {
@@ -58,8 +56,8 @@ public class Hemp extends HFBlockCrops {
 	@Override
 	protected Item getCrop() {
 		Random random = new Random();
-		int x = random.nextInt(100) + 1;
-		Hemp.crop = x > 90 ? HFItems.bud : HFItems.raw_hemp;
+		int x = random.nextInt(30) + 1;
+		Hemp.crop = x > 27 ? HFItems.bud : HFItems.raw_hemp;
 		this.setCropName(crop.equals(HFItems.raw_hemp) ? "hemp" : "bud");
 		return HFBlockCrops.crop;
 	}
@@ -83,9 +81,11 @@ public class Hemp extends HFBlockCrops {
 
 			}
 		}
-		int x = rand.nextInt(100) + 1;
-		if (x > 99) {
-			ret.add(new ItemStack(HFItems.leaf, rand.nextInt(2) + 1));
+		if (ConfigHandler.enableWand == true) {
+			int x = rand.nextInt(100) + 1;
+			if (x > 99) {
+				ret.add(new ItemStack(HFItems.leaf, rand.nextInt(2) + 1));
+			}
 		}
 		return ret;
 	}

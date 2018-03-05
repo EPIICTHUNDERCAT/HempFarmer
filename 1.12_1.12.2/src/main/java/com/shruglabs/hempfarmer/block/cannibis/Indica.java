@@ -43,10 +43,10 @@ public class Indica extends HFBlockCrops {
 	protected Item getSeed() {
 		Item seed;
 		Random random = new Random();
-		int x = random.nextInt(100) + 1;
-		if (x > 97) {
+		int x = random.nextInt(10) + 1;
+		if (x > 7) {
 			seed = HFItems.seeds_sativa;
-		} else if (x > 90) {
+		} else if (x > 9) {
 			seed = HFItems.seeds_hemp;
 		} else {
 			seed = HFItems.seeds_indica;
@@ -58,8 +58,8 @@ public class Indica extends HFBlockCrops {
 	protected Item getCrop() {
 		Item crop;
 		Random random = new Random();
-		int x = random.nextInt(100) + 1;
-		crop = x > 70 ? HFItems.violet_raw_hemp : HFItems.indica_bud;
+		int x = random.nextInt(10) + 1;
+		crop = x > 5 ? HFItems.violet_raw_hemp : HFItems.indica_bud;
 		this.setCropName(crop.equals(HFItems.violet_raw_hemp) ? "hemp" : "bud");
 
 		return crop;
@@ -85,9 +85,11 @@ public class Indica extends HFBlockCrops {
 
 			}
 		}
-		int x = rand.nextInt(100) + 1;
-		if (x > 99) {
-			ret.add(new ItemStack(HFItems.leaf, rand.nextInt(2) + 1));
+		if (ConfigHandler.enableWand == true) {
+			int x = rand.nextInt(100) + 1;
+			if (x > 99) {
+				ret.add(new ItemStack(HFItems.leaf, rand.nextInt(2) + 1));
+			}
 		}
 		return ret;
 	}
