@@ -2,6 +2,7 @@ package com.shruglabs.hempfarmer.entity;
 
 import com.shruglabs.hempfarmer.ConfigHandler;
 import com.shruglabs.hempfarmer.block.HFBlockCrops;
+import com.shruglabs.hempfarmer.block.cannibis.Hemp;
 import com.shruglabs.hempfarmer.init.HFBlocks;
 
 import net.minecraft.block.Block;
@@ -21,7 +22,6 @@ import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.World;
 
 public class EntityShotLeaf extends EntityThrowable {
-
 
 	private EntityLivingBase shooter;
 
@@ -126,11 +126,11 @@ public class EntityShotLeaf extends EntityThrowable {
 					case 37:
 						changeable = true;
 						Block hemp = rand.nextBoolean() ? HFBlocks.sativa_crop : HFBlocks.indica_crop;
-						newState = hemp.getDefaultState().withProperty(HFBlockCrops.AGE, rand.nextInt(7));
+						newState = hemp.getDefaultState().withProperty(Hemp.AGE, rand.nextInt(7));
 						break;
 					case 38:
 						changeable = true;
-						newState = HFBlocks.hemp_crop.getDefaultState().withProperty(HFBlockCrops.AGE, rand.nextInt(7));
+						newState = HFBlocks.hemp_crop.getDefaultState().withProperty(Hemp.AGE, rand.nextInt(7));
 						break;
 					case 161:
 						changeable = true;

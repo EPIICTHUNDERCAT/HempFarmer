@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.shruglabs.hempfarmer.block.HFBlockCrops;
+import com.shruglabs.hempfarmer.block.cannibis.Hemp;
 import com.shruglabs.hempfarmer.init.HFBlocks;
 
 import net.minecraft.block.BlockCrops;
@@ -24,7 +24,7 @@ public class HempGen implements IWorldGenerator {
 	private WorldGenBush sativa;
 
 	public HempGen() {
-		this.hemp = new WorldGenBush((HFBlockCrops) HFBlocks.hemp_crop) {
+		this.hemp = new WorldGenBush((Hemp) HFBlocks.hemp_crop) {
 			private List<Biome> biomes = new ArrayList<Biome>();
 			private boolean initialized;
 
@@ -70,8 +70,8 @@ public class HempGen implements IWorldGenerator {
 						if (worldIn.isAirBlock(blockpos) && (blockpos.getY() < worldIn.getHeight() - 1)
 								&& ((BlockCrops) HFBlocks.hemp_crop).canBlockStay(worldIn, blockpos,
 										HFBlocks.hemp_crop.getDefaultState())) {
-							worldIn.setBlockState(blockpos, HFBlocks.hemp_crop.getDefaultState()
-									.withProperty(HFBlockCrops.AGE, rand.nextInt(7)), 2);
+							worldIn.setBlockState(blockpos,
+									HFBlocks.hemp_crop.getDefaultState().withProperty(Hemp.AGE, rand.nextInt(7)), 2);
 						}
 
 					}
@@ -81,7 +81,7 @@ public class HempGen implements IWorldGenerator {
 				return true;
 			}
 		};
-		this.indica = new WorldGenBush((HFBlockCrops) HFBlocks.indica_crop) {
+		this.indica = new WorldGenBush((Hemp) HFBlocks.indica_crop) {
 			private List<Biome> biomes = new ArrayList<Biome>();
 			private boolean initialized;
 
@@ -119,8 +119,8 @@ public class HempGen implements IWorldGenerator {
 						if (worldIn.isAirBlock(blockpos) && (blockpos.getY() < worldIn.getHeight() - 1)
 								&& ((BlockCrops) HFBlocks.indica_crop).canBlockStay(worldIn, blockpos,
 										HFBlocks.indica_crop.getDefaultState())) {
-							worldIn.setBlockState(blockpos, HFBlocks.indica_crop.getDefaultState()
-									.withProperty(HFBlockCrops.AGE, rand.nextInt(7)), 2);
+							worldIn.setBlockState(blockpos,
+									HFBlocks.indica_crop.getDefaultState().withProperty(Hemp.AGE, rand.nextInt(7)), 2);
 						}
 
 					}
@@ -130,7 +130,7 @@ public class HempGen implements IWorldGenerator {
 				return true;
 			}
 		};
-		this.sativa = new WorldGenBush((HFBlockCrops) HFBlocks.sativa_crop) {
+		this.sativa = new WorldGenBush((Hemp) HFBlocks.sativa_crop) {
 			private List<Biome> biomes = new ArrayList<Biome>();
 			private boolean initialized;
 
@@ -168,8 +168,8 @@ public class HempGen implements IWorldGenerator {
 						if (worldIn.isAirBlock(blockpos) && (blockpos.getY() < worldIn.getHeight() - 1)
 								&& ((BlockCrops) HFBlocks.sativa_crop).canBlockStay(worldIn, blockpos,
 										HFBlocks.sativa_crop.getDefaultState())) {
-							worldIn.setBlockState(blockpos, HFBlocks.sativa_crop.getDefaultState()
-									.withProperty(HFBlockCrops.AGE, rand.nextInt(7)), 2);
+							worldIn.setBlockState(blockpos,
+									HFBlocks.sativa_crop.getDefaultState().withProperty(Hemp.AGE, rand.nextInt(7)), 2);
 						}
 					}
 

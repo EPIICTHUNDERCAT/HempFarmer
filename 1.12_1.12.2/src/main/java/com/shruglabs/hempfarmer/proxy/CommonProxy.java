@@ -22,7 +22,9 @@ public class CommonProxy {
 	//		ConfigHandler.config(preEvent);
 		
 		  HFRecipes.FurnaceRegister(preEvent);
-		register(preEvent);
+		HFBlocks.register(preEvent);
+		HFItems.register(preEvent);
+		registerEntities(preEvent);
 
 	}
 
@@ -31,13 +33,6 @@ public class CommonProxy {
 		registerRender(event);
 		MinecraftForge.EVENT_BUS.register(new HempGenDecor());
 	//	GameRegistry.registerWorldGenerator(new HempGen(), 2);
-	}
-
-	public void register(FMLPreInitializationEvent preEvent) {
-		HFBlocks.register(preEvent);
-		HFItems.register(preEvent);
-		registerEntities(preEvent);
-		//HFRecipes.registerRecipes(preEvent);
 	}
 
 	public void registerRender(FMLInitializationEvent event) {

@@ -21,6 +21,8 @@ public class Joint extends HFDrug {
 
 
 
+
+
 	public Joint(String name, int maxStack) {
 		super(name, maxStack);
 
@@ -65,11 +67,11 @@ public class Joint extends HFDrug {
 		}
 
 		if (!world.isRemote) {
-			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 400, 1, true, false));
-			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(8), 400, 2, true, false));
-			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 50, 3, true, false));
-			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 150, 1, true, false));
-			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(24), 400, 2, true, false));
+			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 150, 1, true, false));
+			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(8), 4000, 2, true, false));
+			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 16, 3, true, false));
+			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 1500, 1, true, false));
+			entity.addPotionEffect(new PotionEffect(Potion.getPotionById(24), 4000, 2, true, false));
 			smoke(entity, world);
 		}
 		return stack;
@@ -91,5 +93,4 @@ public class Joint extends HFDrug {
 		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y, z, -0.05, -0.05, 0.05);
 		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, y, z + 0.2, -0.05, -0.05, -0.05);*/
 	}
-
 }

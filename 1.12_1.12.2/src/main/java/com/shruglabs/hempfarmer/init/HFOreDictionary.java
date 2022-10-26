@@ -54,4 +54,5 @@ public class HFOreDictionary extends OreDictionary {
 		registerOre("hempseedsCrushed", new ItemStack(HFItems.seeds_sativa_crushed));
 	}
 
+
 }

@@ -9,10 +9,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HFRecipes {
 	@SubscribeEvent
-
 	public static void FurnaceRegister(FMLPreInitializationEvent event) {
 
-		FurnaceRecipes.instance().addSmelting(HFItems.raw_hemp, new ItemStack(Items.BUCKET), 0.1F);
+		FurnaceRecipes.instance().addSmelting(HFItems.raw_hemp, new ItemStack(HFItems.dry_hemp), 0.1F);
 		FurnaceRecipes.instance().addSmelting(HFItems.violet_raw_hemp, new ItemStack(HFItems.violet_dry_hemp), 0.1F);
 		FurnaceRecipes.instance().addSmelting(HFItems.hemp_oil, new ItemStack(HFItems.resin), 0.1F);
 		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(HFBlocks.oily_burlap), new ItemStack(HFBlocks.resin_burlap),
@@ -26,5 +25,4 @@ public class HFRecipes {
 		FurnaceRecipes.instance().addSmelting(HFItems.seeds_indica, new ItemStack(HFItems.seeds_indica_toasted), 0.1F);
 		FurnaceRecipes.instance().addSmelting(HFItems.seeds_sativa, new ItemStack(HFItems.seeds_sativa_toasted), 0.1F);
 	}
-
 }

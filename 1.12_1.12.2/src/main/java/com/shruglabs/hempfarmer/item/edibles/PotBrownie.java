@@ -1,11 +1,10 @@
 package com.shruglabs.hempfarmer.item.edibles;
 
-import java.util.Random;
-
 import javax.annotation.Nullable;
 
 import com.shruglabs.hempfarmer.creativetab.HFCreativeTabs;
 import com.shruglabs.hempfarmer.init.HFItems;
+import com.shruglabs.hempfarmer.utils.HUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +20,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class PotBrownie extends ItemFood {
-	
+
 	public PotBrownie(String name) {
 		super(2, 0.0F, false);
 		
@@ -51,13 +50,12 @@ public EnumAction getItemUseAction(ItemStack stack) {
 	@Override
 	@Nullable
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-		Random random = new Random();
-		int x = random.nextInt(1000) + 250;
+		int x = HUtils.random.nextInt(10000) + 2500;
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(8), x, 6, true, false));
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(17), x, 1, true, false));
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(2), x, 1, true, false));
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(16), x, 5, true, false));
-		x = random.nextInt(400) + 150;
+		x = HUtils.random.nextInt(4000) + 1500;
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(9), x, 5, true, false));
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(11), x + 100, 5, true, false));
 		entityLiving.addPotionEffect(new PotionEffect(Potion.getPotionById(24), x - 60, 5, true, false));
@@ -70,5 +68,4 @@ public EnumAction getItemUseAction(ItemStack stack) {
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 16;
 	}
-
 }

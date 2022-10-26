@@ -29,8 +29,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class HFBlocks  {
-
-	public static List<Block> blocks = new ArrayList<Block>();
+	public static final List<Block> blocks = new ArrayList<Block>();
 	public static final Block burlap = new Burlap(HFMaterial.BURLAP, "burlap");
 	public static final Block violet_burlap = new VioletBurlap(HFMaterial.VIOLET_BURLAP, "violet_burlap");
 	public static final Block lime_burlap = new LimeBurlap(HFMaterial.LIME_BURLAP, "lime_burlap");
@@ -41,9 +40,9 @@ public class HFBlocks  {
 	public static final Block lime_burlap_block = new LimeBurlap(HFMaterial.LIME_BURLAP, "lime_burlap_block");
 	public static final Block oily_burlap_block = new OilyBurlap(HFMaterial.OILY_BURLAP, "oily_burlap_block");
 	public static final Block resin_burlap_block = new ResinBurlap(HFMaterial.RESIN_BURLAP, "resin_burlap_block");
-	public static final Block hemp_crop = new Hemp("hemp_crop");
-	public static final Block indica_crop = new Indica("indica_crop");
-	public static final Block sativa_crop = new Sativa("sativa_crop");
+	public static final Block hemp_crop = new Hemp();
+	public static final Block indica_crop = new Indica();
+	public static final Block sativa_crop = new Sativa();
 	public static final Block covered_dirt = new CoveredDirt("covered_dirt");
 	public static final Block oily_dirt = new OilyDirt("oily_dirt");
 	public static final Block resin_dirt = new ResinDirt("resin_dirt");
@@ -81,5 +80,4 @@ public class HFBlocks  {
 		int id = Block.getIdFromBlock(block);
 		return id;
 	}
-
 }

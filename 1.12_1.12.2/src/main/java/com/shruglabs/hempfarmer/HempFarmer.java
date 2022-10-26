@@ -20,10 +20,10 @@ package com.shruglabs.hempfarmer;
 
 import com.shruglabs.hempfarmer.init.HFItems;
 import com.shruglabs.hempfarmer.proxy.CommonProxy;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -34,7 +34,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
-@Mod(updateJSON = Reference.UPDATE, modid = Reference.ID, name = Reference.NAME, version = Reference.VER)
+@Mod(modid = Reference.ID, name = Reference.NAME, version = Reference.VER)
 public class HempFarmer {
 
 	@Instance(value = "hempfarmer")
@@ -71,7 +71,6 @@ public class HempFarmer {
 				}
 			}
 		}
-		
 
 	}
 }

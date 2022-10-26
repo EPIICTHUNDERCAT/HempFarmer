@@ -5,7 +5,7 @@ import com.shruglabs.hempfarmer.init.HFBlocks;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.item.Item;
 
-public class HFBlockCrops extends BlockCrops {
+public class HFBlockCrops {}/*extends BlockCrops {
 
 	public static Item crop;
 	public String cropName;
@@ -36,3 +36,4 @@ public class HFBlockCrops extends BlockCrops {
 	
 
 }
+*/
